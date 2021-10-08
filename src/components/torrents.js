@@ -398,27 +398,33 @@ function component(object){
                     sub = filter_data.sub,
                     voi = filter_data.voice
 
-                let check = function(search){
+                let check = function(search, invert){
                     let rex = new RegExp(search)
 
-                    if(rex.test(title)) passed = true
-                    else nopass = true
+                    if(rex.test(title)){
+                        if(invert) nopass = true
+                        else passed = true
+                    } 
+                    else{
+                        if(invert) passed = true
+                        else nopass = true
+                    } 
                 }
 
                 if(qua){
-                    if(qua == 1)      check('4k|2160p|ultrahd')
-                    else if(qua == 2) check('fullhd|1080p')
-                    else              check('720p')
+                    if(qua == 1)      check('(4k|uhd)[ |\\]|,|$]|2160[pр]|ultrahd')
+                    else if(qua == 2) check('fullhd|1080[pр]')
+                    else              check('720[pр]')
                 }
 
                 if(hdr){
-                    if(hdr == 1) check('hdr')
-                    else if(/hdr/.test(title)) nopass = true
+                    if(hdr == 1) check('[\\[| ]hdr[10| |\\]|,|$]')
+                    else check('[\\[| ]hdr[10| |\\]|,|$]',true)
                 }
 
                 if(sub){
-                    if(sub == 1)  check('sub')
-                    else if(/sub/.test(title)) nopass = true
+                    if(sub == 1)  check(' sub')
+                    else if(/ sub/.test(title)) nopass = true
                 }
 
                 if(voi){
