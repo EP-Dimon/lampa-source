@@ -2254,7 +2254,8 @@
     function component$8(object) {
       var network = new create$n();
       var scroll = new create$m({
-        mask: true
+        mask: true,
+        over: true
       });
       var items = [];
       var html = $('<div></div>');
@@ -2972,7 +2973,8 @@
     function component$6(object) {
       var network = new create$n();
       var scroll = new create$m({
-        mask: true
+        mask: true,
+        over: true
       });
       var items = [];
       var html = $('<div></div>');
@@ -3113,7 +3115,8 @@
     function component$5(object) {
       var network = new create$n();
       var scroll = new create$m({
-        mask: true
+        mask: true,
+        over: true
       });
       var items = [];
       var html = $('<div></div>');
